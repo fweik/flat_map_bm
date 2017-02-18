@@ -22,7 +22,11 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 function(BENCHMARK NAME SRC)
   add_executable(${NAME} "${SRC}")
-  target_link_libraries(${NAME} ${benchmark_LIBRARIES} ${Boost_LIBRARIES})
+  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    target_link_libraries(${NAME} ${benchmark_LIBRARIES} ${Boost_LIBRARIES} -lpthread)
+  else()
+    target_link_libraries(${NAME} ${benchmark_LIBRARIES} ${Boost_LIBRARIES})
+  endif()
 endfunction()
 
 benchmark(flat_map_bm "flat_map_bm.cpp")

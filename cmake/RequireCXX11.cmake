@@ -36,7 +36,7 @@ if ( DEFINED CMAKE_CXX_COMPILER_VERSION )
     if( CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${required_icc_version} )
       message(FATAL_ERROR "icpc version must be at least "
 	"${required_icc_version} for C++11 support, detected: "
-	"${CMAKE_CXX_COMPILER_VERSION}")     
+	"${CMAKE_CXX_COMPILER_VERSION}")
     endif()
   endif()
 
